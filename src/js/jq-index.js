@@ -153,6 +153,6 @@ $(_ => {
 
   const $tab = $('#tab')
   const $label = $tab.find('>label')
-  $label.click(function() { $tab.attr('data-index', $label.index($(this))) }).eq(2).click()
+  $label.click(function() { $tab.attr('data-index', $label.index($(this))) }).first().click()
 
 })
