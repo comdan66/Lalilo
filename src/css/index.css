@@ -26,6 +26,48 @@ body {
 #clock {
   display: inline-block;
 }
+#clock:before, #clock:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-block;
+  background-color: white;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+#clock:before {
+  border: 8px solid #242428;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 4px 4px 8px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 4px 4px 8px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 4px 4px 8px 8px rgba(0, 0, 0, 0.2);
+}
+#clock:after {
+  z-index: 10;
+  width: 20px;
+  height: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+#clock > * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2;
+}
 #clock > *, #clock > *:before {
   position: absolute;
   display: inline-block;
@@ -54,15 +96,12 @@ body {
 #clock i {
   background-color: rgba(0, 0, 0, 0.2);
 }
-#clock u {
-  background-color: rgba(0, 0, 255, 0.2);
-}
-#clock u.sec {
+#clock .sec {
   background-color: red;
 }
-#clock u.min {
+#clock .min {
   background-color: gray;
 }
-#clock u.hour {
+#clock .hour {
   background-color: black;
 }
