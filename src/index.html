@@ -16,9 +16,237 @@
     <script language="javascript" type="text/javascript" src="js/jq-index.js"></script>
   </head>
   <body>
+    <div id='tab'>
+      <label>介面</label>
+      <label>JavaScript</label>
+      <label>SCSS</label>
+    </div>
 
-    <h1>你好，世界！</h1>
-    <span style="color: rgba(120, 120, 120, 1.00);">這是 <b>Lalilo</b>，你目前版本是 <b>1.0.0</b></span>
+    <div id='panel'>
+      <div id='feature' class='active'></div>
+      <div id='js'>
+        <div>
+          <code></code>
+          <code><span class='a'>/**</span></code>
+          <code><span class='a'> * @author      OA Wu &lt;comdan66@gmail.com&gt;</span></code>
+          <code><span class='a'> * @copyright   Copyright (c) 2015 - 2021, Lalilo</span></code>
+          <code><span class='a'> * @license     http://opensource.org/licenses/MIT  MIT License</span></code>
+          <code><span class='a'> * @link        https://www.ioa.tw/</span></code>
+          <code><span class='a'> */</span></code>
+          <code></code>
+
+          <code><span class='b'>const</span>&nbsp;<span class='c'>create2DArr</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='e'>(</span><span class='f'>width</span><span class='e'>,</span>&nbsp;<span class='f'>height</span><span class='e'>,</span>&nbsp;<span class='f'>element</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='g'>null</span><span class='e'>)</span>&nbsp;<span class='b'>=></span>&nbsp;<span class='e'>{</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class='b'>Array</span><span class='e'>.</span><span class='b'>apply</span><span class='e'>(</span><span class='g'>null</span><span class='e'>,</span>&nbsp;<span class='d'>new</span>&nbsp;<span class='b'>Array</span><span class='e'>(height))</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class='e'>.</span><span class='b'>map</span><span class='e'>(</span><span class='f'>_</span>&nbsp;<span class='b'>=></span>&nbsp;<span class='b'>Array</span><span class='e'>.</span><span class='b'>apply</span><span class='e'>(</span><span class='g'>null</span><span class='e'>,</span>&nbsp;<span class='d'>new</span>&nbsp;<span class='b'>Array</span><span class='e'>(width))</span><span class='e'>.</span><span class='b'>map</span><span class='e'>(</span><span class='f'>_</span>&nbsp;<span class='b'>=></span>&nbsp;<span class='e'>element))</span></code>
+          <code><span class='e'>}</span></code>
+          <code></code>
+
+          <code><span class='b'>const</span>&nbsp;<span class='c'>bind</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='f'>map</span>&nbsp;<span class='b'>=></span>&nbsp;<span class='e'>{</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>for</span>&nbsp;<span class='e'>(</span><span class='b'>let</span>&nbsp;<span class='e'>i</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='g'>0</span><span class='e'>;</span>&nbsp;<span class='e'>i</span>&nbsp;<span class='d'>&lt;</span>&nbsp;<span class='e'>map.length;</span>&nbsp;<span class='e'>i</span><span class='d'>+</span><span class='d'>+</span><span class='e'>)</span>&nbsp;<span class='e'>{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class='d'>for</span>&nbsp;<span class='e'>(</span><span class='b'>let</span>&nbsp;<span class='e'>j</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='g'>0</span><span class='e'>;</span>&nbsp;<span class='e'>j</span>&nbsp;<span class='d'>&lt;</span>&nbsp;<span class='e'>map[i].length;</span>&nbsp;<span class='e'>j</span><span class='d'>+</span><span class='d'>+</span><span class='e'>)</span>&nbsp;<span class='e'>{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='e'>map[i][j].upUnit</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class='d'>=</span>&nbsp;<span class='e'>map[(i</span>&nbsp;<span class='d'>?</span>&nbsp;<span class='e'>i</span>&nbsp;<span class='d'>:</span>&nbsp;<span class='e'>map.length)</span>&nbsp;<span class='d'>-</span>&nbsp;<span class='g'>1</span><span class='e'>][j]</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='e'>map[i][j].downUnit</span>&nbsp;&nbsp;<span class='d'>=</span>&nbsp;<span class='e'>map[i</span>&nbsp;<span class='d'>+</span>&nbsp;<span class='g'>1</span>&nbsp;<span class='d'>==</span>&nbsp;<span class='e'>map.length</span>&nbsp;<span class='d'>?</span>&nbsp;<span class='g'>0</span>&nbsp;<span class='d'>:</span>&nbsp;<span class='e'>(i</span>&nbsp;<span class='d'>+</span>&nbsp;<span class='e'>1)][j]</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='e'>map[i][j].leftUnit</span>&nbsp;&nbsp;<span class='d'>=</span>&nbsp;<span class='e'>map[i][(j</span>&nbsp;<span class='d'>?</span>&nbsp;<span class='e'>j</span>&nbsp;<span class='d'>:</span>&nbsp;<span class='e'>map[i].length)</span>&nbsp;<span class='d'>-</span>&nbsp;<span class='g'>1</span><span class='e'>]</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='e'>map[i][j].rightUnit</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='e'>map[i][j</span>&nbsp;<span class='d'>+</span>&nbsp;<span class='g'>1</span>&nbsp;<span class='d'>==</span>&nbsp;<span class='e'>map[i].length</span>&nbsp;<span class='d'>?</span>&nbsp;<span class="g">0</span>&nbsp;<span class='d'>:</span>&nbsp;<span class="e">(j</span>&nbsp;<span class='d'>+</span>&nbsp;<span class="g">1</span><span class="e">)]</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">}</span></code>
+          <code>&nbsp;&nbsp;<span class="e">}</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class='e'>map</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+
+          <code><span class='b'>const</span>&nbsp;<span class='c'>random</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='e'>(</span><span class='f'>max</span><span class='e'>,</span>&nbsp;<span class='f'>min</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='g'>0</span><span class='e'>)</span>&nbsp;<span class='b'>=></span>&nbsp;<span class='e'>{</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class='b'>Math</span><span class="e">.</span><span class='b'>floor</span><span class="e">(</span><span class='b'>Math</span><span class="e">.</span><span class='b'>random</span><span class="e">(</span><span class="e">)</span>&nbsp;<span class='d'>*</span>&nbsp;<span class='e'>(max</span>&nbsp;<span class='d'>-</span>&nbsp;<span class="e">min</span>&nbsp;<span class="d">+</span>&nbsp;<span class="g">1</span><span class="e">)</span><span class="e">)</span>&nbsp;<span class="d">+</span>&nbsp;<span class="e">min</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+
+          <code><span class='b'>const</span>&nbsp;<span class='c'>genFood</span>&nbsp;<span class='d'>=</span>&nbsp;<span class='f'>map</span>&nbsp;<span class='b'>=></span>&nbsp;<span class='e'>{</span></code>
+          <code>&nbsp;&nbsp;<span class='b'>const</span>&nbsp;<span class="e">units</span>&nbsp;<span class="d">=</span>&nbsp;<span class="e">map.</span><span class="b">reduce</span><span class="e">((</span><span class="f">a</span><span class="e">,</span>&nbsp;<span class="f">b</span><span class="e">)</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">a.</span><span class="b">concat</span><span class="e">(b),</span>&nbsp;<span class="e">[]).</span><span class="b">filter</span><span class="e">(</span><span class="f">unit</span>&nbsp;<span class="b">=></span>&nbsp;<span class="d">!</span><span class="e">unit.node)</span></code>
+          <code>&nbsp;&nbsp;<span class='b'>const</span>&nbsp;<span class="e">index</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">random</span><span class="e">(</span><span class="e">units.length</span>&nbsp;<span class="d">-</span><span class="g">1</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;<span class="e">units[index].</span><span class="b">food</span><span class="e">()</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+          
+          <code><span class='b'>function</span>&nbsp;<span class='c'>Unit</span><span class="e">()</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.$el</span>&nbsp;<span class="d">=</span>&nbsp;<span class="d">$</span><span class="e">(</span><span class="h">&#39;&lt;div /&gt;&#39;</span><span class="e">).</span><span class="b">addClass</span><span class="e">(</span><span class="h">'unit'</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.upUnit</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.downUnit</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.leftUnit</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.rightUnit</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.node</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.isFood</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">false</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+          <code><span class="b">Unit</span><span class="e">.</span><span class="b">prototype</span><span class="e">.</span><span class="c">food</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">function</span><span class="e">()</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.isFood</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">true</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.$el.</span><span class="b">addClass</span><span class="b">(</span><span class="h">'food'</span><span class="b">)</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class="f">this</span></code>
+          <code><span class="e">}</span></code>
+          
+          <code><span class="b">Unit</span><span class="e">.</span><span class="b">prototype</span><span class="e">.</span><span class="c">enter</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">function</span><span class="e">(</span><span class="f">node</span><span class="e">)</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.isFood</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">false</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.$el.</span><span class="b">removeClass</span><span class="b">(</span><span class="h">'food'</span><span class="b">)</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.node</span>&nbsp;<span class="d">=</span>&nbsp;<span class="e">node</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.$el.</span><span class="b">addClass</span><span class="b">(</span><span class="h">'on'</span><span class="b">)</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class="f">this</span></code>
+          <code><span class="e">}</span></code>
+          
+          <code><span class="b">Unit</span><span class="e">.</span><span class="b">prototype</span><span class="e">.</span><span class="c">leave</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">function</span><span class="e">()</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.node</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.$el.</span><span class="b">removeClass</span><span class="b">(</span><span class="h">'on'</span><span class="b">)</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class="f">this</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+          
+          <code><span class='a'>// 蛇物件</span></code>
+          <code><span class='b'>function</span>&nbsp;<span class='c'>Snake</span><span class="e">(</span><span class="f">map</span><span class="e">,</span>&nbsp;<span class="f">unit</span><span class="e">)</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.map</span>&nbsp;<span class="d">=</span>&nbsp;<span class="e">map</span>&nbsp;<span class="a">// 地圖</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.nodes</span>&nbsp;<span class="d">=</span>&nbsp;<span class="e">[]</span>&nbsp;<span class="a">// 身體節點</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">0</span>&nbsp;<span class="a">// 目前方向</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.directions</span>&nbsp;<span class="d">=</span>&nbsp;<span class="e">[]</span>&nbsp;<span class="a">// 方向容器</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.goTimer</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">null</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">head</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">_</span>&nbsp;<span class="b">=></span>&nbsp;<span class="f">this</span><span class="e">.nodes[</span><span class="g">0</span><span class="e">]</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">tail</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">_</span>&nbsp;<span class="b">=></span>&nbsp;<span class="f">this</span><span class="e">.nodes[</span><span class="f">this</span><span class="e">.nodes.length</span>&nbsp;<span class="d">-</span>&nbsp;<span class="g">1</span><span class="e">]</span></code>
+          <code></code>
+        
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">eatFood</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">unit</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 長度加一</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">this</span><span class="e">.nodes.</span><span class="b">push</span><span class="e">(</span><span class="d">new</span>&nbsp;<span class="e">SnakeNode(unit))</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 重新產生食物</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">genFood</span><span class='e'>(</span><span class="f">this</span><span class="e">.map)</span></code>
+          <code>&nbsp;&nbsp;<span class="e">}</span></code>
+
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">moveTo</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">unit</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 撞到自己</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">unit.node</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.</span><span class="b">stop</span><span class="e">(</span><span class="b">alert</span><span class="e">(</span><span class="h">'GG'</span><span class="e">))</span></code>
+          <code></code>
+
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 吃到食物</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">unit.isFood</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.</span><span class="b">eatFood</span><span class="e">(unit)</span></code>
+          <code></code>
+          
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 尾巴離開 unit</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">this</span><span class='e'>.</span><span class="b">tail</span><span class="e">()</span><span class='e'>.</span><span class="b">leave</span><span class="e">()</span></code>
+          <code></code>
+          
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 後面往前面移動</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class='d'>for</span>&nbsp;<span class='e'>(</span><span class='b'>let</span>&nbsp;<span class='e'>i</span>&nbsp;<span class='d'>=</span>&nbsp;<span class="f">this</span><span class='e'>.nodes.length</span>&nbsp;<span class="d">-</span>&nbsp;<span class="g">1</span><span class='e'>;</span>&nbsp;<span class='e'>i</span>&nbsp;<span class='d'>&gt;</span>&nbsp;<span class="g">0</span><span class='e'>;</span>&nbsp;<span class='e'>i</span><span class='d'>-</span><span class='d'>-</span><span class='e'>)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">this</span><span class='e'>.nodes[i].unit</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">this</span><span class='e'>.nodes[i</span>&nbsp;<span class="d">-</span>&nbsp;<span class="g">1</span><span class="e">].unit</span></code>
+          <code></code>
+
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 頭進入 unit</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">this</span><span class='e'>.</span><span class="b">head</span><span class="e">()</span><span class='e'>.</span><span class="b">enter</span><span class="e">(unit)</span></code>
+          <code>&nbsp;&nbsp;<span class="e">}</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">stop</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">_</span>&nbsp;<span class="b">=></span>&nbsp;<span class="b">clearInterval</span><span class="e">(</span><span class="f">this</span><span class="e">.goTimer)</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">go</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">_</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">this</span><span class="e">.goTimer</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">setInterval</span><span class="e">(</span><span class="f">_</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="a">// 取出方向</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='b'>const</span>&nbsp;<span class="e">direction</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">this</span><span class="e">.directions.</span><span class="b">shift</span><span class="e">()</span>&nbsp;<span class="d">||</span>&nbsp;<span class="f">this</span><span class="e">.direction</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">38</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.</span><span class="b">moveTo</span><span class="e">(</span><span class="f">this</span><span class="e">.</span><span class="b">head</span><span class="e">().unit.upUnit)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">40</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.</span><span class="b">moveTo</span><span class="e">(</span><span class="f">this</span><span class="e">.</span><span class="b">head</span><span class="e">().unit.downUnit)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">37</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.</span><span class="b">moveTo</span><span class="e">(</span><span class="f">this</span><span class="e">.</span><span class="b">head</span><span class="e">().unit.leftUnit)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">39</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.</span><span class="b">moveTo</span><span class="e">(</span><span class="f">this</span><span class="e">.</span><span class="b">head</span><span class="e">().unit.rightUnit)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">},</span>&nbsp;<span class="g">150</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;<span class="e">}</span></code>
+
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.</span><span class="c">pushDirections</span>&nbsp;<span class="d">=</span>&nbsp;<span class="f">direction</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">38</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">!=</span>&nbsp;<span class="g">40</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.directions.</span><span class="b">push</span><span class='e'>(</span><span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">38</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">40</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">!=</span>&nbsp;<span class="g">38</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.directions.</span><span class="b">push</span><span class='e'>(</span><span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">40</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">39</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">!=</span>&nbsp;<span class="g">37</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.directions.</span><span class="b">push</span><span class='e'>(</span><span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">39</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">direction</span>&nbsp;<span class="d">==</span>&nbsp;<span class="g">37</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">!=</span>&nbsp;<span class="g">39</span>&nbsp;<span class="d">&&</span>&nbsp;<span class="f">this</span><span class="e">.directions.</span><span class="b">push</span><span class='e'>(</span><span class="f">this</span><span class="e">.direction</span>&nbsp;<span class="d">=</span>&nbsp;<span class="g">37</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;<span class="e">}</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class='e'>.</span><span class="b">eatFood</span><span class="e">(unit)</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+          <code><span class="a">// 蛇的節點物件</span></code>
+          <code><span class='b'>function</span>&nbsp;<span class='c'>SnakeNode</span><span class="e">(</span><span class="f">unit</span><span class="e">)</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class='e'>.</span><span class="b">enter</span><span class="e">(unit)</span></code>
+          <code><span class="e">}</span></code>
+          <code><span class="b">SnakeNode</span><span class="e">.</span><span class="b">prototype</span><span class="e">.</span><span class="c">enter</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">function</span><span class="e">(</span><span class="f">unit</span><span class="e">)</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.unit</span>&nbsp;<span class="d">=</span>&nbsp;<span class='e'>unit.</span><span class="b">enter</span><span class="e">(</span><span class="f">this</span><span class="e">)</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class="f">this</span></code>
+          <code><span class="e">}</span></code>
+          <code><span class="b">SnakeNode</span><span class="e">.</span><span class="b">prototype</span><span class="e">.</span><span class="c">leave</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">function</span><span class="e">()</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="f">this</span><span class="e">.unit.</span><span class="b">leave</span><span class="e">()</span></code>
+          <code>&nbsp;&nbsp;<span class='d'>return</span>&nbsp;<span class="f">this</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+          <code><span class="d">$</span><span class='e'>(</span><span class="f">_</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="a">// 產生地圖</span></code>
+          <code>&nbsp;&nbsp;<span class="b">const</span>&nbsp;<span class="e">map</span>&nbsp;<span class="d">=</span>&nbsp;<span class="b">bind</span><span class="e">(</span><span class="b">create2DArr</span><span class="e">(</span><span class="g">10</span><span class="e">,</span>&nbsp;<span class="g">10</span><span class="e">).</span><span class="b">map</span><span class="e">(</span><span class="f">row</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">row.</span><span class="b">map</span><span class="e">(</span><span class="f">column</span>&nbsp;<span class="b">=></span>&nbsp;<span class="d">new</span>&nbsp;<span class="e">Unit())))</span></code>
+          <code></code>
+          
+          <code>&nbsp;&nbsp;<span class="a">// 加入網頁</span></code>
+          <code>&nbsp;&nbsp;<span class="d">$</span><span class="e">(</span><span class="h">'#feature'</span><span class="e">).</span><span class="b">append</span><span class="e">(</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="d">$</span><span class="e">(</span><span class="h">'&lt;div /&gt;'</span><span class="e">).</span><span class="b">addClass</span><span class="e">(</span><span class="h">'map'</span><span class="e">)</span><span class="e">).</span><span class="b">append</span><span class="e">(</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">map.</span><span class="b">map</span><span class="e">(</span><span class="f">units</span>&nbsp;<span class="b">=></span>&nbsp;<span class="d">$</span><span class="e">(</span><span class="h">'&lt;div /&gt;'</span><span class="e">).</span><span class="b">addClass</span><span class="e">(</span><span class="f">'units'</span><span class="e">).</span><span class="b">append</span><span class="e">(</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">units.</span><span class="b">map</span><span class="e">(</span><span class="f">unit</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">unit.$el)))))</span></code>
+          <code></code>
+          
+          <code>&nbsp;&nbsp;<span class="a">// 初始一隻蛇，放到地圖上，並且給予起始點</span></code>
+          <code>&nbsp;&nbsp;<span class="b">const</span>&nbsp;<span class="e">snake</span>&nbsp;<span class="d">=</span>&nbsp;<span class="d">new</span>&nbsp;<span class="e">Snake(map,</span>&nbsp;<span class="e">map[</span><span class="g">0</span><span class="e">][</span><span class="g">0</span><span class="e">])</span></code>
+          <code>&nbsp;&nbsp;<span class="e">snake.</span><span class="b">moveTo</span><span class="e">(map[</span><span class="g">0</span><span class="e">][</span><span class="g">1</span><span class="e">])</span></code>
+          <code></code>
+          
+          <code>&nbsp;&nbsp;<span class="a">// 蛇要記錄所有按下的方向</span></code>
+          <code>&nbsp;&nbsp;<span class="d">$</span><span class="e">(</span><span class="b">window</span><span class="e">).</span><span class="b">keyup</span><span class="e">(</span><span class="f">e</span>&nbsp;<span class="b">=></span>&nbsp;<span class="e">snake.</span><span class="b">pushDirections</span><span class="e">(e.keyCode))</span></code>
+          <code></code>
+          
+          <code>&nbsp;&nbsp;<span class="a">// 蛇開始跑</span></code>
+          <code>&nbsp;&nbsp;<span class="e">snake.</span><span class="b">go</span><span class="e">()</span></code>
+          <code><span class="e">})</span></code>
+          <code></code>
+
+        </div>
+      </div>
+      <div id='scss'>
+        <div>
+          <code></code>
+          <code><span class="a">//</span></code>
+          <code><span class="a">// @author      OA Wu &lt;comdan66@gmail.com&gt;</span></code>
+          <code><span class="a">// @copyright   Copyright (c) 2015 - 2021, Lalilo</span></code>
+          <code><span class="a">// @license     http://opensource.org/licenses/MIT  MIT License</span></code>
+          <code><span class="a">// @link        https://www.ioa.tw/</span></code>
+          <code><span class="a">//</span></code>
+          <code></code>
+          <code><span class="c">.map</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;<span class="b">margin</span><span class="e">:</span>&nbsp;<span class="g">20</span><span class="d">px</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;<span class="b">display</span><span class="e">:</span>&nbsp;<span class="b">inline-block</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;<span class="b">display</span><span class="e">:</span>&nbsp;<span class="b">inline-flex</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;<span class="b">flex-direction</span><span class="e">:</span>&nbsp;<span class="b">column</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;<span class="b">border</span><span class="e">:</span>&nbsp;<span class='g'>1</span><span class="d">px</span>&nbsp;<span class="b">solid</span>&nbsp;<span class="b">rgba</span><span class="e">(</span><span class='g'>0</span><span class="e">,</span>&nbsp;<span class='g'>0</span><span class="e">,</span>&nbsp;<span class='g'>0</span><span class="e">,</span>&nbsp;<span class='g'>.1</span><span class="e">);</span></code>
+          <code>&nbsp;&nbsp;<span class="d">@include</span>&nbsp;<span class="b">border-radius</span><span class='e'>(</span><span class='g'>2</span><span class="d">px</span><span class="e">);</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;<span class="c">.units</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">display</span><span class="e">:</span>&nbsp;<span class="b">inline-flex</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">flex-direction</span><span class="e">:</span>&nbsp;<span class="b">row</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">align-items</span><span class="e">:</span>&nbsp;<span class="b">center</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">justify-content</span><span class="e">:</span>&nbsp;<span class="b">flex-start</span><span class="e">;</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c">.unit</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">display</span><span class="e">:</span>&nbsp;<span class="b">inline-block</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">width</span><span class="e">:</span>&nbsp;<span class="g">20</span><span class="d">px</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">height</span><span class="e">:</span>&nbsp;<span class="g">20</span><span class="d">px</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="d">@include</span>&nbsp;<span class="b">transition</span><span class="e">(</span><span class="h">background-color</span>&nbsp;<span class="g">.1</span><span class="d">s</span><span class="e">)</span><span class="e">;</span></code>
+          <code></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="d">&</span><span class="c">.on</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">background-color</span><span class="e">:</span>&nbsp;<span class="b">rgba</span><span class="e">(</span><span class="g">0</span><span class="e">,</span>&nbsp;<span class="g">0</span><span class="e">,</span>&nbsp;<span class="g">255</span><span class="e">,</span>&nbsp;<span class="g">.2</span><span class="e">)</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">}</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="d">&</span><span class="c">.food</span>&nbsp;<span class="e">{</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="d">@include</span>&nbsp;<span class="b">border-radius</span><span class="e">(</span><span class="g">50</span><span class="d">%</span><span class="e">)</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="b">background-color</span><span class="e">:</span>&nbsp;<span class="b">red</span><span class="e">;</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">}</span></code>
+          <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="e">}</span></code>
+          <code>&nbsp;&nbsp;<span class="e">}</span></code>
+          <code><span class="e">}</span></code>
+          <code></code>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

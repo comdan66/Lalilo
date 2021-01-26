@@ -31,3 +31,154 @@ body {
   background-color: rgba(255, 255, 255, 1.00);
 }
 
+
+.map {
+  margin: 20px;
+  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, .1);
+  @include border-radius(2px);
+  
+  .units {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+
+    .unit {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      @include transition(background-color .1s);
+      
+      &.on {
+        background-color: rgba(0, 0, 255, 0.2);
+      }
+      &.food {
+        @include border-radius(50%);
+        background-color: red;
+      }
+    }
+  }
+}
+
+#tab {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  $color: rgba(200, 200, 200, 1);
+  border-bottom: 1px solid $color;
+  padding: 0 12px;
+  padding-top: 8px;
+
+ 
+  label {
+    display: inline-block;
+    padding: 0 16px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+    border-top: 1px solid $color;
+    border-left: 1px solid $color;
+    @include user-select(none);
+
+    &.active {
+    }
+    &:first-child {
+      @include border-top-left-radius(4px);
+    }
+    &:last-child {
+      border-right: 1px solid $color;
+      @include border-top-right-radius(4px);
+    }
+  }
+
+  @for $i from 1 through 3 {
+    &[data-index='#{$i - 1}'] {
+      label {
+        &:nth-child(#{$i}) {
+          height: 32px;
+          line-height: 32px;
+          font-size: 16px;
+          background-color: white;
+          margin-bottom: -1px;
+          border-left: 1px solid $color;
+          border-right: 1px solid $color;
+          @include border-top-radius(4px);
+          + * { border-left: 0; }
+        }
+      }
+      + #panel {
+        > div {
+          &:nth-child(#{$i}) {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+#panel {
+  width: 100%;
+  
+  > div {
+    display: none;
+  }
+}
+
+#js, #scss {
+  width: 100%;
+  padding: 20px;
+  div {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    background-color: rgba(36, 36, 40, 1.00);
+    padding: 4px 0;
+    letter-spacing: 1px;
+    @include border-radius(4px);
+  }
+  code {
+    position: relative;
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    padding-left: 40px + 8px;
+    overflow: hidden;
+    @include user-select(none);
+    
+    @for $i from 1 through 200 {
+      &:nth-child(#{$i}) {
+        &:before {
+          content: '#{$i}';
+        }   
+      }
+    }
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      width: 40px;
+      text-align: right;
+      padding-right: 6px;
+      font-size: 12px;
+      color: rgba(146, 146, 148, 1.00);
+      background-color: rgba(48, 48, 52, 1.00);
+      @include box-shadow(1px 0 3px rgba(0, 0, 0, .50));
+    }
+  }
+  .a { color: rgba(127, 140, 153, 1.00); }
+  .b { color: rgba(118, 209, 255, 1.00); }
+  .c { color: rgba(179, 253, 170, 1.00); }
+  .d { color: rgba(236, 59, 92, 1.00); }
+  .e { color: rgba(255, 255, 255, 1.00); }
+  .f { color: rgba(248, 164, 28, 1.00); }
+  .g { color: rgba(187, 129, 255, 1.00); }
+  .h { color: rgba(251, 233, 140, 1.00); }
+}
