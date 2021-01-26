@@ -1,0 +1,175 @@
+//
+// @author      OA Wu <comdan66@gmail.com>
+// @copyright   Copyright (c) 2015 - 2021, Lalilo
+// @license     http://opensource.org/licenses/MIT  MIT License
+// @link        https://www.ioa.tw/
+//
+
+@use "sass:math";
+
+@import "@/CSS3/Transform/TransformOrigin";
+@import "Lalilo";
+
+* {
+  &, &:after, &:before {
+    @include box-sizing(border-box);
+    @include font-smoothing(subpixel-antialiased);
+  }
+}
+
+body {
+  position: relative;
+
+  display: inline-block;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+  color: rgba(90, 90, 90, 1.00);
+
+  font-size: medium;
+  text-align: center;
+  font-family: "微軟正黑體", "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+  
+  background-color: rgba(255, 255, 255, 1.00);
+}
+
+#clock {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: inline-block;
+  $padding: 20px;
+  margin-top: 20px;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: inline-block;
+    background-color: white;
+    @include transform(translate(-50%, -50%));
+    @include border-radius(50%);
+  }
+  
+  &:before {
+    border: 8px solid rgba(96, 96, 99, 1.00);
+    
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    @include box-shadow(inset 4px 4px 11px 4px rgba(0, 0, 0, .2));
+  }
+  &:after {
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    @include box-shadow(1px 1px 3px rgba(0, 0, 0, .5));
+  }
+  > * {
+    @include user-select(none);
+    z-index: 2;
+    position: absolute;
+    display: inline-block;
+  }
+  b {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    @include transform(translate(-50%, -50%));
+
+    font-size: 12px;
+    color: rgba(95, 95, 95, 1.00);
+    &:before {
+      font-size: 20px;
+    }
+    @for $i from 0 through 11 {
+      &.n#{$i} {
+        top: calc(50% - #{math.cos($i * 30deg) * (320px - 28px - $padding) / 2});
+        left: calc(50% + #{math.sin($i * 30deg) * (320px - 28px - $padding) / 2});
+        &:before { content: '#{($i + 11) % 12 + 1}'; }
+      }
+    }
+  }
+  i {
+    $h: 10px;
+    width: 1px;
+    height: $h;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.25)), color-stop(100%, rgba(0, 0, 0, 0.5)));
+    background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.5) 100%);
+
+    @include opacity(0.5);
+    
+    @for $i from 0 through 59 {
+      &.n#{$i} {
+        top: calc(50% - #{math.cos($i * 6deg) * ((320px - $h - $padding) / 2 - 28px)});
+        left: calc(50% + #{math.sin($i * 6deg) * ((320px - $h - $padding) / 2 - 28px)});
+        @include transform(translate(-50%, -50%) rotate($i * 6deg));
+
+        @if $i % 5 == 0 {
+          width: 2px;
+          background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjUiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC43NSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+          background-size: 100%;
+          background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.75)));
+          background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.75) 100%);
+          background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.75) 100%);
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.75) 100%);
+        }
+      }
+    }
+  }
+  u {
+    $s: 16px;
+    position: absolute;
+    z-index: 1;
+    left: calc(50% - 6px / 2);
+    display: inline-block;
+    width: 6px;
+
+    @include border-top-radius(50%);
+    @include border-bottom-radius(3px);
+    @include rotate(0);
+    @include transition(none);
+    
+    @for $i from 0 through 60 {
+      &.n#{$i} {
+        @include rotate(#{$i * 6deg});
+      }
+    }
+    &.ani {
+      // @include transition(transform 1s linear);
+    }
+    &.ani {
+      @include transition(transform .5s cubic-bezier(.11, 1.45, .46, .94));
+    }
+    
+    &.s {
+      $over: 14px;
+      bottom: calc(50% - #{($s / 2 + $over)});
+      @include transform-origin(center, calc(100% - #{($s / 2 + $over)}));
+
+      height: calc(50% - 24px);
+      background-color: rgba(213, 79, 61, 1.00);
+    }
+    &.m {
+      $over: 12px;
+      bottom: calc(50% - #{($s / 2 + $over)});
+      @include transform-origin(center, calc(100% - #{($s / 2 + $over)}));
+      
+      height: calc(50% - 36px);
+      background-color: rgba(0, 0, 0, 1);
+    }
+    &.h {
+      $over: 8px;
+      bottom: calc(50% - #{($s / 2 + $over)});
+      @include transform-origin(center, calc(100% - #{($s / 2 + $over)}));
+      height: calc(50% - 64px);
+      background-color: rgba(0, 0, 0, .50);
+    }
+  }
+}
