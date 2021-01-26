@@ -31,3 +31,43 @@ body {
   background-color: rgba(255, 255, 255, 1.00);
 }
 
+#clock {
+  display: inline-block;
+  > * {
+    
+    &, &:before {
+      position: absolute;
+      display: inline-block;
+    }
+  }
+  span, i {
+    &:before {
+      content: attr(text);
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+    }
+  }
+  span {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  i, u {
+    @include border-radius(50%);
+  }
+  i {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  u {
+    background-color: rgba(0, 0, 255, 0.2);
+    &.sec {
+      background-color: red;
+    }
+    &.min {
+      background-color: gray;
+    }
+    &.hour {
+      background-color: black;
+    }
+  }
+}
