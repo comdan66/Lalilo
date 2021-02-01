@@ -1,0 +1,107 @@
+@charset "UTF-8";
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-font-smoothing: subpixel-antialiased;
+  -ms-font-smoothing: subpixel-antialiased;
+  -o-font-smoothing: subpixel-antialiased;
+  font-smoothing: subpixel-antialiased;
+}
+
+body {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #5a5a5a;
+  font-size: medium;
+  text-align: center;
+  font-family: "微軟正黑體", "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+  background-color: white;
+}
+
+#clock {
+  display: inline-block;
+}
+#clock:before, #clock:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-block;
+  background-color: white;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+#clock:before {
+  border: 8px solid #242428;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 4px 4px 8px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 4px 4px 8px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 4px 4px 8px 8px rgba(0, 0, 0, 0.2);
+}
+#clock:after {
+  z-index: 10;
+  width: 20px;
+  height: 20px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+#clock > * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2;
+}
+#clock > *, #clock > *:before {
+  position: absolute;
+  display: inline-block;
+}
+#clock span:before, #clock i:before {
+  content: attr(text);
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#clock span {
+  font-weight: bold;
+  font-size: 20px;
+}
+#clock i, #clock u {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+#clock i {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#clock .sec {
+  background-color: red;
+}
+#clock .min {
+  background-color: gray;
+}
+#clock .hour {
+  background-color: black;
+}

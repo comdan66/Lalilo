@@ -9,7 +9,6 @@
 
 * {
   &, &:after, &:before {
-    vertical-align: top;
     @include box-sizing(border-box);
     @include font-smoothing(subpixel-antialiased);
   }
@@ -32,3 +31,70 @@ body {
   background-color: rgba(255, 255, 255, 1.00);
 }
 
+#clock {
+  
+  display: inline-block;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: inline-block;
+    background-color: white;
+    @include transform(translate(-50%, -50%));
+    @include border-radius(50%);
+  }
+  
+  &:before {
+    border: 8px solid rgba(36, 36, 40, 1.00);
+    
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    @include box-shadow(inset 4px 4px 8px 8px rgba(0, 0, 0, .2));
+  }
+  &:after {
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    @include box-shadow(1px 1px 3px rgba(0, 0, 0, .5));
+  }
+  > * {
+    @include user-select(none);
+    z-index: 2;
+    &, &:before {
+      position: absolute;
+      display: inline-block;
+    }
+  }
+  span, i {
+    &:before {
+      content: attr(text);
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+    }
+  }
+  span {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  i, u {
+    @include border-radius(50%);
+  }
+  i {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  u {
+    
+  }
+  .sec {
+    background-color: red;
+  }
+  .min {
+    background-color: gray;
+  }
+  .hour {
+    background-color: black;
+  }
+}

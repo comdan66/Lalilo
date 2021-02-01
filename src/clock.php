@@ -18,6 +18,7 @@ echo html(
     title('⏰ 時鐘 滴滴噠噠'),
 
     asset()
+      ->css('https://fonts.googleapis.com/css?family=Fraunces:400,300,700')
       ->css('icon.css')
       ->css('clock.css')
       ->js('https://code.jquery.com/jquery-1.12.4.min.js')
