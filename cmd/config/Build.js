@@ -28,6 +28,8 @@ module.exports = {
 
   ignoreDirs: [], // 忽略的目錄
 
+  includeFiles: ['CNAME'], // 允許的檔案
+
   exts: [ // 允許的副檔名
     '.php', '.html', '.txt', '.css', '.js', '.eot', '.svg', '.ttf', '.woff', '.png', '.jpg', '.jpeg', '.gif', '.ico', '.xml', '.json'
   ]
